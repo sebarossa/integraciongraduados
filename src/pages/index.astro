@@ -1,0 +1,106 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Topbar from "../components/Topbar.astro";
+import Countdown from "../components/Countdown.astro";
+import PropsGrid from "../components/PropsGrid.astro";
+import Footer from "../components/Footer.astro";
+
+import { consejoSuperior } from "../data/campaign.js";
+---
+<Layout title="Integración Graduados · Consejo Superior UTN · Elecciones 2026">
+
+  <Topbar
+    logoSrc="/assets/logo-integracion.jpeg"
+    brandText="Integración Graduados"
+    links={[
+      { href: "#propuestas", label: "Propuestas" },
+      { href: "#candidatos", label: "Candidatos" },
+    ]}
+  />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div>
+        <div class="hero__eyebrow">
+          <span class="dot"></span>
+          Lista Nacional · Consejo Superior UTN · 2026
+        </div>
+        <h1 class="hero__title">
+          <span class="script">Integración</span><br />
+          <span class="accent">Graduados</span>
+        </h1>
+        <p class="hero__sub">
+          Diez graduados y graduadas de Facultades Regionales de todo el país
+          llevando la misma plataforma al órgano máximo de gobierno de la
+          Universidad Tecnológica Nacional.
+        </p>
+        <div class="hero__meta">
+          <span class="hero__chip">10 candidatos federales</span>
+          <span class="hero__chip">UTN pública y federal</span>
+        </div>
+      </div>
+      <Countdown />
+    </div>
+
+    <div class="hero__ribbon">
+      <div class="hero__ribbon-inner">
+        {[0, 1].map(() => (
+          <>
+            <span>Integración Graduados</span><span class="star">✦</span>
+            <span>Una UTN federal</span><span class="star">✦</span>
+            <span>Soberanía tecnológica</span><span class="star">✦</span>
+            <span>Red de graduados/as</span><span class="star">✦</span>
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPUESTAS -->
+  <section class="section" id="propuestas" data-screen-label="Propuestas">
+    <div class="section__inner">
+      <header class="section__head">
+        <div>
+          <div class="section__kicker">Plataforma 2026 — 2028</div>
+          <h2 class="section__title">
+            <span class="script">Nuestras</span> propuestas
+          </h2>
+        </div>
+        <p class="section__lead">
+          Cinco ejes que construyen la UTN pública, federal y tecnológica del
+          futuro. La misma plataforma que llevamos a todas las instancias de
+          gobierno universitario.
+        </p>
+      </header>
+
+      <PropsGrid />
+    </div>
+  </section>
+
+  <!-- CANDIDATOS -->
+  <section class="section section--cream" id="candidatos" data-screen-label="Candidatos">
+    <div class="section__inner">
+      <header class="section__head">
+        <div>
+          <div class="section__kicker">Lista Nacional</div>
+          <h2 class="section__title">
+            <span class="script">Diez voces</span> federales
+          </h2>
+        </div>
+        <p class="section__lead">
+          Una lista que representa la diversidad de la UTN: ingenieros e ingenieras
+          de distintas especialidades y regionales del país.
+        </p>
+      </header>
+
+      <div class="photo-grid">
+        {consejoSuperior.map((c) => (
+          <img class="photo-grid__img" src={c.foto} alt={c.name} loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
